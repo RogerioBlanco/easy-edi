@@ -3,10 +3,10 @@ package org.easyframework.edi.schema.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.easyframework.edi.schema.model.Edifact;
-import org.easyframework.edi.schema.model.Edifact.DataElement;
-import org.easyframework.edi.schema.model.Edifact.Element;
-import org.easyframework.edi.schema.model.Edifact.Segment;
+import org.easyframework.edi.schema.Edifact;
+import org.easyframework.edi.schema.Edifact.DataElement;
+import org.easyframework.edi.schema.Edifact.Element;
+import org.easyframework.edi.schema.Edifact.Segment;
 import org.easyframework.edi.standart.syntax.Syntax;
 
 public class EdifactReader
@@ -56,7 +56,16 @@ public class EdifactReader
 
 	private String fetchName(String text, int startSegment)
 	{
-		return text.substring(startSegment, nextElementSeparator(text, startSegment));
+		int endIndex = nextElementSeparator(text, startSegment);
+		
+		int index = startSegment;
+		
+		String name = text.substring(index, endIndex);
+		
+		while(!Character.isLetter(name.charAt(0)))
+			name = text.substring(++index, endIndex);
+		
+		return name;
 	}
 
 	private List<Element> fetchElements(String text, int startSegment, int endSegment)

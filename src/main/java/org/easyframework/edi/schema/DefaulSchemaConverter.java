@@ -1,7 +1,6 @@
 package org.easyframework.edi.schema;
 
 import org.easyframework.edi.schema.converter.EdifactReader;
-import org.easyframework.edi.schema.model.Edifact;
 import org.easyframework.edi.standart.syntax.Syntax;
 
 public class DefaulSchemaConverter implements SchemaConverter

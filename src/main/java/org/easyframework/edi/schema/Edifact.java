@@ -1,4 +1,4 @@
-package org.easyframework.edi.schema.model;
+package org.easyframework.edi.schema;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +22,6 @@ public class Edifact
 	public List<Segment> getSegments()
 	{
 		return segments;
-	}
-
-	public void addSegment(Segment segment)
-	{
-		this.segments.add(segment);
 	}
 
 	public String toString()
@@ -79,7 +74,7 @@ public class Edifact
 		@Override
 		public String toString()
 		{
-			return super.toString();
+			return line + " - " + name +" - " + elements.toString();
 		}
 
 		@Override
@@ -112,6 +107,12 @@ public class Edifact
 			return dataElements;
 		}
 
+		@Override
+		public String toString()
+		{
+			return dataElements.toString();
+		}
+		
 		@Override
 		public int compareTo(Element o)
 		{

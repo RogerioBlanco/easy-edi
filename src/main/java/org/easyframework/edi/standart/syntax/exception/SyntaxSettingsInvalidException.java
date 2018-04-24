@@ -1,6 +1,8 @@
-package org.easyframework.edi.standart.exception;
+package org.easyframework.edi.standart.syntax.exception;
 
-public class SyntaxSettingsInvalidException extends ContextInvalidException
+import org.easyframework.edi.exception.SerializerException;
+
+public class SyntaxSettingsInvalidException extends SerializerException
 {
 
 	private static final long serialVersionUID = -5589849602892394720L;

@@ -9,11 +9,6 @@ public class SerializerException extends RuntimeException
 		super();
 	}
 
-	public SerializerException(String msg, Throwable arg)
-	{
-		super(msg, arg);
-	}
-
 	public SerializerException(Throwable arg)
 	{
 		super(arg);
@@ -22,6 +17,11 @@ public class SerializerException extends RuntimeException
 	public SerializerException(String msg)
 	{
 		super(msg);
+	}
+
+	public SerializerException(String msg, Throwable arg)
+	{
+		super(msg, arg);
 	}
 
 	public SerializerException(String format, Object... args)

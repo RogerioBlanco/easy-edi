@@ -1,26 +1,13 @@
 package org.easyframework.edi.standart;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.charset.Charset;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
-public class Traverser
+public interface Traverser
 {
 
-	private Context context;
+	<T> T read(Class<T> type, InputStreamReader inputStream);
 
-	public Traverser(final Context context)
-	{
-		this.context = context;
-	}
-
-	public void write(Object instance, OutputStream out, Charset charset)
-	{
-	}
-
-	public <T> T read(Class<T> type, InputStream input, Charset charset)
-	{
-		return null;
-	}
+	<T> boolean write(T instance, OutputStreamWriter outputStream);
 
 }

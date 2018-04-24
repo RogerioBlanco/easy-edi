@@ -10,6 +10,6 @@ public interface Serializer
 {
 	public <T> T read(Class<T> type, InputStream input, Charset charset) throws SerializerException;
 
-	public <T> boolean write(T instance, OutputStream output, Charset charset) throws SerializerException;
+	public <T> void write(T instance, OutputStream output, Charset charset) throws SerializerException;
 
 }

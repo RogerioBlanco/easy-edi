@@ -13,15 +13,18 @@ import org.easyframework.edi.standart.syntax.Syntax;
 import org.junit.Before;
 import org.junit.Test;
 
-public class SchemaConverterTest
+public class EdifactConverterTest
 {
 
 	private Syntax defaultSyntax;
+	
+	private EdifactConverter converter;
 
 	@Before
 	public void setupTest()
 	{
 		this.defaultSyntax = new Syntax();
+		this.converter = new DefaultEdifactConverter();
 	}
 
 	@Test
@@ -48,10 +51,8 @@ public class SchemaConverterTest
 		)));
 			
 		String text = Resources.getFileResourceContent("edifact-samples/Sample 1.txt", Charset.defaultCharset());
-
-		SchemaConverter converter = new DefaulSchemaConverter(defaultSyntax);
 		
-		Edifact actual = converter.convert(text);
+		Edifact actual = converter.from(defaultSyntax, text).toEdifact();
 		
 		assertEquals(expected.toString(), actual.toString());
 	}

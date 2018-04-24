@@ -5,15 +5,21 @@ import org.easyframework.edi.standart.syntax.Syntax;
 public interface EdifactConverter
 {
 
-	public EdifactConverterReturn from(Syntax syntax, String text);
+	public EdifactConverterReturn from(final String text);
+	
+	public <T> EdifactConverterReturn from(final Schema schema, final T instance);
 
-	public <T> EdifactConverterReturn from(Schema schema, T instance);
-
-	public interface EdifactConverterReturn 
+	public interface EdifactConverterReturn
 	{
-		public Edifact toEdifact();
-		
-		public <T> T toPOJO(Schema schema);
+		public EdifactReturn toEdifact(final Syntax syntax);
 	}
+
+	public interface EdifactReturn {
+		
+		public Edifact get();
+		
+		public <T> T toPOJO(final Schema schema);
+	}
+	
 
 }

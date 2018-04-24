@@ -41,7 +41,7 @@ public class DefaultTraverser implements Traverser
 	{
 		String text = streamHelper.read(input, charset);
 
-		return converter.from(syntax, text).toPOJO(support.fetch(type));
+		return converter.from(text).toEdifact(syntax).toPOJO(support.fetch(type));
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class DefaultTraverser implements Traverser
 
 	public <T> void write(Syntax syntax, T instance, OutputStream output, Charset charset)
 	{
-		Edifact edifact = converter.from(support.fetch(instance.getClass()), instance).toEdifact();
+		Edifact edifact = converter.from(support.fetch(instance.getClass()), instance).toEdifact(syntax).get();
 
 		streamHelper.write(edifact.toString(), output, charset);
 	}

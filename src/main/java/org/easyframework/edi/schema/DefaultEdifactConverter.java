@@ -7,29 +7,47 @@ public class DefaultEdifactConverter implements EdifactConverter
 {
 
 	@Override
-	public EdifactConverterReturn from(final Syntax syntax, final String text)
+	public EdifactConverterReturn from(final String text)
 	{
-
-		return new EdifactConverterReturn() {
-
-			@Override
-			public <T> T toPOJO(Schema schema)
-			{
-				return null;
-			}
-
-			@Override
-			public Edifact toEdifact()
-			{
-				return new EdifactReader(syntax).read(text);
-			}
+		return (final Syntax syntax) -> {
+			Edifact edifact = new EdifactReader(syntax).read(text);
+			
+			return new EdifactReturn() {
+				
+				@Override
+				public <T> T toPOJO(final Schema schema)
+				{
+					return null;
+				}
+				
+				@Override
+				public Edifact get()
+				{
+					return edifact;
+				}
+			};
 		};
 	}
 
 	@Override
-	public <T> EdifactConverterReturn from(Schema schema, T instance)
+	public <T> EdifactConverterReturn from(final Schema schema, final T instance)
 	{
-		return null;
+		return (final Syntax syntax) -> {
+			return new EdifactReturn() {
+				@Override
+				public <T> T toPOJO(Schema schema)
+				{
+					return (T) instance;
+				}
+				
+				@Override
+				public Edifact get()
+				{
+					return null;
+				}
+			};
+		};
 	}
+
 
 }

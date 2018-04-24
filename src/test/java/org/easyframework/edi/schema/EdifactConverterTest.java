@@ -52,7 +52,7 @@ public class EdifactConverterTest
 			
 		String text = Resources.getFileResourceContent("edifact-samples/Sample 1.txt", Charset.defaultCharset());
 		
-		Edifact actual = converter.from(defaultSyntax, text).toEdifact();
+		Edifact actual = converter.from(text).toEdifact(defaultSyntax).get();
 		
 		assertEquals(expected.toString(), actual.toString());
 	}

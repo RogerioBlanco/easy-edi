@@ -9,17 +9,19 @@ public class DefaultEdifactConverter implements EdifactConverter
 	@Override
 	public EdifactConverterReturn from(final String text)
 	{
-		return (final Syntax syntax) -> {
-			Edifact edifact = new EdifactReader(syntax).read(text);
-			
-			return new EdifactReturn() {
-				
+		return (final Syntax syntax) -> 
+		{
+			final Edifact edifact = new EdifactReader(syntax).read(text);
+
+			return new EdifactReturn() 
+			{
+
 				@Override
 				public <T> T toPOJO(final Schema schema)
 				{
 					return null;
 				}
-				
+
 				@Override
 				public Edifact get()
 				{
@@ -32,7 +34,8 @@ public class DefaultEdifactConverter implements EdifactConverter
 	@Override
 	public <T> EdifactConverterReturn from(final Schema schema, final T instance)
 	{
-		return (final Syntax syntax) -> {
+		return (final Syntax syntax) -> 
+		{
 			return new EdifactReturn() {
 				@Override
 				public <T> T toPOJO(Schema schema)
@@ -48,6 +51,5 @@ public class DefaultEdifactConverter implements EdifactConverter
 			};
 		};
 	}
-
 
 }

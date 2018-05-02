@@ -8,8 +8,6 @@ import org.easyframework.edi.helper.StreamHelper;
 import org.easyframework.edi.schema.DefaultEdifactConverter;
 import org.easyframework.edi.schema.Edifact;
 import org.easyframework.edi.schema.EdifactConverter;
-import org.easyframework.edi.schema.SchemaRoot;
-import org.easyframework.edi.schema.SupportSchema;
 import org.easyframework.edi.standart.syntax.Syntax;
 
 public class DefaultTraverser implements Traverser
